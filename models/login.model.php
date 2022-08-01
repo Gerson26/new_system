@@ -10,31 +10,6 @@ class LoginModel extends ModelBase
     {
         parent::__construct();
     }
-    public function registrar($datos){
-        $query_datos_socio = $this->db->connect();
-        $query_datos_socio->beginTransaction();
-        try {
-            //reg_categoria,reg_prefijo,reg_nombre,reg_nombre,reg_nombre,reg_rfc,reg_calle,reg_numext,reg_numint,reg_estado,reg_alcaldia,reg_colonia,reg_lada,reg_telefono,reg_correo
-            $query_datos_socio->prepare("
-                INSERT INTO cat_socios (nombre_socio,apellidop_socio,apellidom_socio,correo_socio,fk_categoria,fk_prefijo) 
-                VALUES (:nombreSocio,:apellidopSocio,:apellidomSocio,:categoriaSocio,:prefijoSocio);
-            ");
-            $query_datos_socio->execute([
-                ':nombreSocio'=> ,
-                ':apellidopSocio' => ,
-                ':apellidomSocio' => ,
-                ':categoriaSocio' => ,
-                ':prefijoSocio' =>
-            ]);
-            $query_datos_socio->commit();
-            return true;
-        } catch (PDOException $e) {
-            $query_datos_socio->rollBack();
-            return false;
-        }
-        //echo $datos['reg_correo'];
-
-    }
     public function getFindByUsuario($nickname)
     {
         $usuario = new Usuario();
