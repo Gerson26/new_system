@@ -34,6 +34,9 @@ class Catalogos extends ControllerBase
         $data = $this->model->catalogoLadas();
         echo json_encode($data);
       }
+      public function categorias(){
+        $this->view->render('catalogos/categorias');
+      }
 }
 
 ?>
